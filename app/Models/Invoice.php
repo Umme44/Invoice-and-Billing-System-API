@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    //
-     protected $fillable = ['invoice_date', 'items'];
+    
+  
+     protected $fillable = ['invoice_date','discount', 'tax', 'status', 'total_amount'];
+
+
+
+
+       
 
 
     public function items()

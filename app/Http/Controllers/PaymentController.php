@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Payment;
 class PaymentController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -12,6 +13,8 @@ class PaymentController extends Controller
     public function index()
     {
         //
+
+        
     }
 
     /**
@@ -20,6 +23,8 @@ class PaymentController extends Controller
     public function create()
     {
         //
+
+        
     }
 
     /**
@@ -28,6 +33,8 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+
+        
     }
 
     /**
