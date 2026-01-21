@@ -13,4 +13,4 @@ use App\Http\Controllers\PaymentController;
 
 Route::post('/invoice',[InvoiceController::class, 'store']);
 Route::get('/invoices',[InvoiceController::class, 'index']);
-// Route::post('/payment',[PaymentController::class, 'store']);
+Route::post('/payment',[PaymentController::class, 'store']);
