@@ -95,13 +95,35 @@ $invoice=Invoice::With('items')->get();
     public function update(Request $request, string $id)
     {
         //
+
+        $invoice = Invoice::find($id);
+        if($invoice->status==='paid'){
+            return response()->json([
+                "message" =>'Paid invoices cannot be edited.'
+            ],403);
+        }
+
+        $invoice->update($request::all());
+
+         
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+     public function destroy(string $id){
+           $invoice = Invoice::find($id);
+        if (! $invoice) {
+        return response()->json([
+            'message' => 'Invoice not found'
+        ], 404);
+    }
+
+    $user->delete();
+
+    return response()->json([
+        'message' => 'Invoice deleted successfully'
+    ]);
+
     }
 }
