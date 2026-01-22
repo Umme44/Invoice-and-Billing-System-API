@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Payment;
 class PaymentController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -12,6 +13,10 @@ class PaymentController extends Controller
     public function index()
     {
         //
+         $payment=Payment::With('payment')->get();
+        return  $payment;
+
+        
     }
 
     /**
@@ -20,6 +25,8 @@ class PaymentController extends Controller
     public function create()
     {
         //
+
+        
     }
 
     /**
@@ -28,6 +35,23 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+         $payment = Payment::create([
+        'invoice_id' => $request->invoice_id,
+        'amount' => $request->amount,
+    ]);
+
+    
+    $invoice = $payment->invoice; 
+    $invoice->status = 'paid';
+    $invoice->save();
+
+    return response()->json([
+        'message' => 'Payment created and invoice status updated.',
+        'payment' => $payment,
+        'invoice' => $invoice
+    ]);
+
+        
     }
 
     /**
